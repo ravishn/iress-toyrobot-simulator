@@ -14,18 +14,16 @@ public class TableBoundaryTest {
         when(mockPosition.getX()).thenReturn(6);
         when(mockPosition.getY()).thenReturn(7);
 
-        TableBoundary board = new TableBoundary(4, 5);
-        Assert.assertFalse(board.isToyRobotInsideTheTableBoundary(mockPosition));
-
+        TableBoundary tableBoundary = new TableBoundary(4, 5);
+        Assert.assertFalse(tableBoundary.isToyRobotInsideTheTableBoundary(mockPosition));
 
         when(mockPosition.getX()).thenReturn(1);
         when(mockPosition.getY()).thenReturn(1);
-        Assert.assertTrue(board.isToyRobotInsideTheTableBoundary(mockPosition));
-
+        Assert.assertTrue(tableBoundary.isToyRobotInsideTheTableBoundary(mockPosition));
 
         when(mockPosition.getX()).thenReturn(-1);
         when(mockPosition.getY()).thenReturn(-1);
-        Assert.assertFalse(board.isToyRobotInsideTheTableBoundary(mockPosition));
+        Assert.assertFalse(tableBoundary.isToyRobotInsideTheTableBoundary(mockPosition));
     }
 
 }

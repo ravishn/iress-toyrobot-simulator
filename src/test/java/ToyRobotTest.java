@@ -17,7 +17,6 @@ public class ToyRobotTest {
         Assert.assertEquals(1, toyRobot.getToyRobotPosition().getY());
         Assert.assertEquals(Directions.NORTH, toyRobot.getToyRobotPosition().getDirection());
 
-
         toyRobot.isToyRobotSetPosition(new ToyRobotPositionAndDiretion(1, 2, Directions.EAST));
         toyRobot.moveToyRobotForward();
         toyRobot.moveToyRobotForward();
