@@ -79,27 +79,27 @@ public class ToyRobotPositionAndDiretion {
             throw new ToyRobotException("Invalid robot direction");
         }
 
-        ToyRobotPositionAndDiretion updatePositionByDirection = new ToyRobotPositionAndDiretion(this);
+        ToyRobotPositionAndDiretion updatePosition = new ToyRobotPositionAndDiretion(this);
 
         switch (this.direction) {
 
             case NORTH:
-                updatePositionByDirection.updateToyRobotPosition(0, 1);
+                updatePosition.updateToyRobotPosition(0, 1);
                 break;
 
             case EAST:
-                updatePositionByDirection.updateToyRobotPosition(1, 0);
+                updatePosition.updateToyRobotPosition(1, 0);
                 break;
 
             case SOUTH:
-                updatePositionByDirection.updateToyRobotPosition(0, -1);
+                updatePosition.updateToyRobotPosition(0, -1);
                 break;
 
             case WEST:
-                updatePositionByDirection.updateToyRobotPosition(-1, 0);
+                updatePosition.updateToyRobotPosition(-1, 0);
                 break;
         }
 
-        return updatePositionByDirection;
+        return updatePosition;
     }
 }

@@ -10,7 +10,7 @@ public class ToyRobot {
      * Empty constructor for unit tests
      */
     public ToyRobot() {
-        
+
     }
 
     public ToyRobot(ToyRobotPositionAndDiretion toyRobotPosition) {
@@ -51,7 +51,6 @@ public class ToyRobot {
             return false;
         }
 
-        // change position
         this.toyRobotPosition = newToyRobotPosition;
 
         return true;
