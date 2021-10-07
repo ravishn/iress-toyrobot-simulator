@@ -80,5 +80,9 @@ public class EvaluateToyToyRobotPositionAndDiretionTest {
         Assert.assertEquals("Invalid command", evaluateToyPosition.evaluateRobotPosition("LETF"));
         thrown.expect(ToyRobotException.class);
         Assert.assertEquals("Invalid command", evaluateToyPosition.evaluateRobotPosition("RIHGT"));
+        thrown.expect(ToyRobotException.class);
+        Assert.assertEquals("Invalid command", evaluateToyPosition.evaluateRobotPosition("EATS"));
+        thrown.expect(ToyRobotException.class);
+        Assert.assertEquals("Invalid command", evaluateToyPosition.evaluateRobotPosition("WETS"));
     }
 }
