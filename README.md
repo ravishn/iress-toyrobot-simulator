@@ -89,12 +89,12 @@ c)
 - Use this Maven command to compile the application `mvn compile`
 - Alternatively, use `mvn clean compile` to clean up generated artifacts and perform a clean compile
 
-##Testing the application
+## Testing the application
 - Use this Maven command for running all the tests `mvn test`
 
-##Execute the application
+## Execute the application
 - Use this command to execute the application `mvn exec:java`
 
-##Build and package
+## Build and package
 - Use this command to create the executable jar file inside *target/* folder `mvn package`
 - Alternatively, user `mvn clean package` to clean up all the generated artifacts and package a fresh copy of the jar file
