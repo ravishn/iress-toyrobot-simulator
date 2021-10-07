@@ -9,6 +9,7 @@ other obstructions on the table surface. The robot is free to roam around the su
 from falling to destruction. Any movement that would result in the robot falling from the table must be prevented,
 however further valid movement commands must still be allowed.
 
+
 - Create a console application that can read in commands of the following form
 
   PLACE X,Y,F
