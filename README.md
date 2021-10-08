@@ -100,6 +100,7 @@ c)
 - Alternatively, run `mvn clean package` to clean up all the generated artifacts and package a fresh copy of the jar file
 
 ## Running the application on Docker
+- Build the application to generate jar file by running the command `mvn clean package`. This will generate `toyrobot-<version>.jar` file which is required for docker image to     run the application inside the docker container
 - Run this command to create a docker image `docker build -t toyrobot .` from the project level where Dockerfile exists
 - Verify if the image has been created `docker images`
 - Run the docker image by using the command `docker run` with `-i` option as this is a commandline application and requires
