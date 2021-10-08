@@ -9,21 +9,21 @@ import static org.mockito.Mockito.when;
 public class TableBoundaryTest {
 
     @Test
-    public void testIsValidPosition() throws Exception {
-        ToyRobotPositionAndDiretion mockPosition = mock(ToyRobotPositionAndDiretion.class);
-        when(mockPosition.getX()).thenReturn(6);
-        when(mockPosition.getY()).thenReturn(7);
+    public void testIsValidPosition() {
+        ToyRobotPositionAndDiretion mockToyRobotPosition = mock(ToyRobotPositionAndDiretion.class);
+        when(mockToyRobotPosition.getX()).thenReturn(6);
+        when(mockToyRobotPosition.getY()).thenReturn(7);
 
         TableBoundary tableBoundary = new TableBoundary(4, 5);
-        Assert.assertFalse(tableBoundary.isToyRobotInsideTheTableBoundary(mockPosition));
+        Assert.assertFalse(tableBoundary.isToyRobotInsideTheTableBoundary(mockToyRobotPosition));
 
-        when(mockPosition.getX()).thenReturn(1);
-        when(mockPosition.getY()).thenReturn(1);
-        Assert.assertTrue(tableBoundary.isToyRobotInsideTheTableBoundary(mockPosition));
+        when(mockToyRobotPosition.getX()).thenReturn(1);
+        when(mockToyRobotPosition.getY()).thenReturn(1);
+        Assert.assertTrue(tableBoundary.isToyRobotInsideTheTableBoundary(mockToyRobotPosition));
 
-        when(mockPosition.getX()).thenReturn(-1);
-        when(mockPosition.getY()).thenReturn(-1);
-        Assert.assertFalse(tableBoundary.isToyRobotInsideTheTableBoundary(mockPosition));
+        when(mockToyRobotPosition.getX()).thenReturn(-1);
+        when(mockToyRobotPosition.getY()).thenReturn(-1);
+        Assert.assertFalse(tableBoundary.isToyRobotInsideTheTableBoundary(mockToyRobotPosition));
     }
 
 }

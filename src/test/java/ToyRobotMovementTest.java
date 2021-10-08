@@ -10,34 +10,34 @@ public class ToyRobotMovementTest {
     @Test
     public void testToyRobotMovementAroundTheTableBoundary() throws ToyRobotException {
 
-        ToyRobotMovement toyRobot = new ToyRobotMovement(new ToyRobotPositionAndDiretion(0, 0, Directions.NORTH));
+        ToyRobotMovement moveToyRobot = new ToyRobotMovement(new ToyRobotPositionAndDiretion(0, 0, Directions.NORTH));
 
-        Assert.assertTrue(toyRobot.moveToyRobotForward());
-        Assert.assertEquals(0, toyRobot.getToyRobotPosition().getX());
-        Assert.assertEquals(1, toyRobot.getToyRobotPosition().getY());
-        Assert.assertEquals(Directions.NORTH, toyRobot.getToyRobotPosition().getDirection());
+        Assert.assertTrue(moveToyRobot.moveToyRobotForward());
+        Assert.assertEquals(0, moveToyRobot.getToyRobotPosition().getX());
+        Assert.assertEquals(1, moveToyRobot.getToyRobotPosition().getY());
+        Assert.assertEquals(Directions.NORTH, moveToyRobot.getToyRobotPosition().getDirection());
 
-        toyRobot.isToyRobotSetPosition(new ToyRobotPositionAndDiretion(1, 2, Directions.EAST));
-        toyRobot.moveToyRobotForward();
-        toyRobot.moveToyRobotForward();
-        toyRobot.rotateToyRobotToLeft();
-        toyRobot.moveToyRobotForward();
+        moveToyRobot.isToyRobotSetPosition(new ToyRobotPositionAndDiretion(1, 2, Directions.EAST));
+        moveToyRobot.moveToyRobotForward();
+        moveToyRobot.moveToyRobotForward();
+        moveToyRobot.rotateToyRobotToLeft();
+        moveToyRobot.moveToyRobotForward();
 
-        Assert.assertEquals(3, toyRobot.getToyRobotPosition().getX());
-        Assert.assertEquals(3, toyRobot.getToyRobotPosition().getY());
-        Assert.assertEquals(Directions.NORTH, toyRobot.getToyRobotPosition().getDirection());
+        Assert.assertEquals(3, moveToyRobot.getToyRobotPosition().getX());
+        Assert.assertEquals(3, moveToyRobot.getToyRobotPosition().getY());
+        Assert.assertEquals(Directions.NORTH, moveToyRobot.getToyRobotPosition().getDirection());
 
-        toyRobot.isToyRobotSetPosition(new ToyRobotPositionAndDiretion(0, 0, Directions.NORTH));
-        toyRobot.rotateToyRobotToRight();
-        Assert.assertEquals(Directions.EAST, toyRobot.getToyRobotPosition().getDirection());
-        toyRobot.rotateToyRobotToRight();
-        Assert.assertEquals(Directions.SOUTH, toyRobot.getToyRobotPosition().getDirection());
-        toyRobot.rotateToyRobotToRight();
-        Assert.assertEquals(Directions.WEST, toyRobot.getToyRobotPosition().getDirection());
-        toyRobot.rotateToyRobotToRight();
-        Assert.assertEquals(Directions.NORTH, toyRobot.getToyRobotPosition().getDirection());
-        toyRobot.rotateToyRobotToRight();
-        Assert.assertEquals(Directions.EAST, toyRobot.getToyRobotPosition().getDirection());
+        moveToyRobot.isToyRobotSetPosition(new ToyRobotPositionAndDiretion(0, 0, Directions.NORTH));
+        moveToyRobot.rotateToyRobotToRight();
+        Assert.assertEquals(Directions.EAST, moveToyRobot.getToyRobotPosition().getDirection());
+        moveToyRobot.rotateToyRobotToRight();
+        Assert.assertEquals(Directions.SOUTH, moveToyRobot.getToyRobotPosition().getDirection());
+        moveToyRobot.rotateToyRobotToRight();
+        Assert.assertEquals(Directions.WEST, moveToyRobot.getToyRobotPosition().getDirection());
+        moveToyRobot.rotateToyRobotToRight();
+        Assert.assertEquals(Directions.NORTH, moveToyRobot.getToyRobotPosition().getDirection());
+        moveToyRobot.rotateToyRobotToRight();
+        Assert.assertEquals(Directions.EAST, moveToyRobot.getToyRobotPosition().getDirection());
     }
 
 }

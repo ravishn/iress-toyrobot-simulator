@@ -22,8 +22,8 @@ public class EvaluateToyRobotMovementTest {
     public void testInitialPlacingOfTheToyRobot() throws ToyRobotException {
 
         TableBoundary tableBoundary = new TableBoundary(TABLE_DEPTH, TABLE_WIDTH);
-        ToyRobotMovement toyRobot = new ToyRobotMovement();
-        EvaluateToyPositionService evaluateToyPosition = new EvaluateToyPositionService(tableBoundary, toyRobot);
+        ToyRobotMovement moveToyRobot = new ToyRobotMovement();
+        EvaluateToyPositionService evaluateToyPosition = new EvaluateToyPositionService(tableBoundary, moveToyRobot);
 
         Assert.assertTrue(evaluateToyPosition.positionToyRobot(new ToyRobotPositionAndDiretion(0, 1, Directions.NORTH)));
         Assert.assertTrue(evaluateToyPosition.positionToyRobot(new ToyRobotPositionAndDiretion(2, 2, Directions.SOUTH)));
