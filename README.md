@@ -86,15 +86,22 @@ c)
   the application
 
 ## Compiling the application
-- Use this Maven command to compile the application `mvn compile`
-- Alternatively, use `mvn clean compile` to clean up generated artifacts and perform a clean compile
+- Run this Maven command to compile the application `mvn compile`
+- Alternatively, run `mvn clean compile` to clean up generated artifacts and perform a clean compile
 
 ## Testing the application
-- Use this Maven command for running all the tests `mvn test`
+- Run this Maven command for running all the tests `mvn test`
 
 ## Execute the application
-- Use this command to execute the application `mvn exec:java`
+- Run this command to execute the application `mvn exec:java`
 
 ## Build and package
-- Use this command to create the executable jar file inside *target/* folder `mvn package`
-- Alternatively, user `mvn clean package` to clean up all the generated artifacts and package a fresh copy of the jar file
+- Run this command to create the executable jar file inside *target/* folder `mvn package`
+- Alternatively, run `mvn clean package` to clean up all the generated artifacts and package a fresh copy of the jar file
+
+## Running the application on Docker
+- Run this command to create a docker image `docker build -t toyrobot .` from the project level where Dockerfile exists
+- Verify if the image has been created `docker images`
+- Run the docker image by using the command `docker run` with `-i` option as this is a commandline application and requires
+  user input from the console. Full command `docker run -i toyrobot`
+- Move/change toy robot's direction by passing relevant commands
