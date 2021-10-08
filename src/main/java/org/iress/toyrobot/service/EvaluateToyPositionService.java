@@ -4,7 +4,7 @@ import org.iress.toyrobot.exception.ToyRobotException;
 import org.iress.toyrobot.constants.Commands;
 import org.iress.toyrobot.constants.Directions;
 import org.iress.toyrobot.impl.ToyRobotPositionAndDiretion;
-import org.iress.toyrobot.impl.ToyRobot;
+import org.iress.toyrobot.impl.ToyRobotMovement;
 import org.iress.toyrobot.interfaces.Boundary;
 
 /**
@@ -13,12 +13,12 @@ import org.iress.toyrobot.interfaces.Boundary;
 public class EvaluateToyPositionService {
 
     Boundary tableBoundary;
-    ToyRobot toyRobot;
+    ToyRobotMovement moveToyRobotForward;
 
-    public EvaluateToyPositionService(Boundary tableBoundary, ToyRobot toyRobot) {
+    public EvaluateToyPositionService(Boundary tableBoundary, ToyRobotMovement moveToyRobotForward) {
 
         this.tableBoundary = tableBoundary;
-        this.toyRobot = toyRobot;
+        this.moveToyRobotForward = moveToyRobotForward;
     }
 
     /**
@@ -50,7 +50,7 @@ public class EvaluateToyPositionService {
             return false;
         }
 
-        toyRobot.isToyRobotSetPosition(toyRobotPositionAndDiretion);
+        moveToyRobotForward.isToyRobotSetPosition(toyRobotPositionAndDiretion);
         return true;
     }
 
@@ -113,21 +113,21 @@ public class EvaluateToyPositionService {
                 break;
 
             case MOVE:
-                ToyRobotPositionAndDiretion newToyRobotPositionPosition = toyRobot.getToyRobotPosition().computePosition();
+                ToyRobotPositionAndDiretion newToyRobotPositionPosition = moveToyRobotForward.getToyRobotPosition().computePosition();
                 if (!tableBoundary.isToyRobotInsideTheTableBoundary(newToyRobotPositionPosition)) {
                     resultingPosition = String.valueOf(false);
                 }
                 else {
-                    resultingPosition = String.valueOf(toyRobot.moveToyRobotForward(newToyRobotPositionPosition));
+                    resultingPosition = String.valueOf(moveToyRobotForward.moveToyRobotForward(newToyRobotPositionPosition));
                 }
                 break;
 
             case LEFT:
-                resultingPosition = String.valueOf(toyRobot.rotateToyRobotToLeft());
+                resultingPosition = String.valueOf(moveToyRobotForward.rotateToyRobotToLeft());
                 break;
 
             case RIGHT:
-                resultingPosition = String.valueOf(toyRobot.rotateToyRobotToRight());
+                resultingPosition = String.valueOf(moveToyRobotForward.rotateToyRobotToRight());
                 break;
 
             case REPORT:
@@ -144,13 +144,13 @@ public class EvaluateToyPositionService {
      * Method to return the current position of the toy robot in X,Y,DIRECTION format
      */
     public String report() {
-        if (toyRobot.getToyRobotPosition() == null) {
+        if (moveToyRobotForward.getToyRobotPosition() == null) {
 
             return null;
         }
 
-        return "Toy Robot's current position is " +toyRobot.getToyRobotPosition().getX() + ","
-                                                  + toyRobot.getToyRobotPosition().getY() + ","
-                                                  + toyRobot.getToyRobotPosition().getDirection();
+        return "Toy Robot's current position is " + moveToyRobotForward.getToyRobotPosition().getX() + ","
+                                                  + moveToyRobotForward.getToyRobotPosition().getY() + ","
+                                                  + moveToyRobotForward.getToyRobotPosition().getDirection();
     }
 }

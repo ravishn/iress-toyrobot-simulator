@@ -2,7 +2,7 @@ package org.iress.toyrobot;
 
 import org.iress.toyrobot.exception.ToyRobotException;
 import org.iress.toyrobot.impl.TableBoundary;
-import org.iress.toyrobot.impl.ToyRobot;
+import org.iress.toyrobot.impl.ToyRobotMovement;
 import org.iress.toyrobot.service.EvaluateToyPositionService;
 
 import java.io.*;
@@ -25,8 +25,8 @@ public class ToyRobotApplication {
             System.exit(1);
         }
 
-        ToyRobot toyRobot = new ToyRobot();
-        EvaluateToyPositionService evaluateToyPosition = new EvaluateToyPositionService(tableBoundary, toyRobot);
+        ToyRobotMovement moveToyRobotForward = new ToyRobotMovement();
+        EvaluateToyPositionService evaluateToyPosition = new EvaluateToyPositionService(tableBoundary, moveToyRobotForward);
 
         System.out.println("Position your toy robot");
         System.out.println("PLACE X,Y,NORTH | SOUTH | EAST | WEST, MOVE, LEFT, RIGHT, REPORT | EXIT");
