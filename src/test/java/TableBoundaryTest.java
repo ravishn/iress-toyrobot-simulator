@@ -1,4 +1,4 @@
-import org.iress.toyrobot.impl.ToyRobotPositionAndDiretion;
+import org.iress.toyrobot.impl.ToyRobotPositionAndDirection;
 import org.iress.toyrobot.impl.TableBoundary;
 import org.junit.Assert;
 import org.junit.Test;
@@ -10,7 +10,7 @@ public class TableBoundaryTest {
 
     @Test
     public void testIsValidPosition() {
-        ToyRobotPositionAndDiretion mockToyRobotPosition = mock(ToyRobotPositionAndDiretion.class);
+        ToyRobotPositionAndDirection mockToyRobotPosition = mock(ToyRobotPositionAndDirection.class);
         when(mockToyRobotPosition.getX()).thenReturn(6);
         when(mockToyRobotPosition.getY()).thenReturn(7);
 

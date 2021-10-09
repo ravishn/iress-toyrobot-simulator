@@ -1,8 +1,8 @@
 package org.iress.toyrobot.interfaces;
 
-import org.iress.toyrobot.impl.ToyRobotPositionAndDiretion;
+import org.iress.toyrobot.impl.ToyRobotPositionAndDirection;
 
 public interface Boundary {
 
-    boolean isToyRobotInsideTheTableBoundary(ToyRobotPositionAndDiretion position);
+    boolean isToyRobotInsideTheTableBoundary(ToyRobotPositionAndDirection position);
 }
