@@ -4,7 +4,7 @@ FROM openjdk:8-jdk-alpine
 #Use root as working directory
 WORKDIR /
 
-#Copy /src for running build and initial data set-up queries for the API
+#Copy /src for building the application
 COPY /src ./src
 
 #Use this port to run the application
