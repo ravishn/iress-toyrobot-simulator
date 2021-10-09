@@ -3,7 +3,7 @@ package org.iress.toyrobot.service;
 import org.iress.toyrobot.exception.ToyRobotException;
 import org.iress.toyrobot.constants.Commands;
 import org.iress.toyrobot.constants.Directions;
-import org.iress.toyrobot.impl.ToyRobotPositionAndDiretion;
+import org.iress.toyrobot.impl.ToyRobotPositionAndDirection;
 import org.iress.toyrobot.impl.ToyRobotMovement;
 import org.iress.toyrobot.interfaces.Boundary;
 
@@ -24,33 +24,33 @@ public class EvaluateToyPositionService {
     /**
      * Determine the position of the toy robot on the table at X,Y and facing in the direction NORTH | SOUTH | EAST | WEST
      *
-     * @param toyRobotPositionAndDiretion Robot position
+     * @param toyRobotPositionAndDirection Robot position
      * @return true if placed successfully
      * @throws ToyRobotException
      */
-    public boolean positionToyRobot(ToyRobotPositionAndDiretion toyRobotPositionAndDiretion) throws ToyRobotException {
+    public boolean positionToyRobot(ToyRobotPositionAndDirection toyRobotPositionAndDirection) throws ToyRobotException {
 
         if (tableBoundary == null) {
 
             throw new ToyRobotException("Invalid boundary");
         }
 
-        if (toyRobotPositionAndDiretion == null) {
+        if (toyRobotPositionAndDirection == null) {
 
             throw new ToyRobotException("Invalid position");
         }
 
-        if (toyRobotPositionAndDiretion.getDirection() == null) {
+        if (toyRobotPositionAndDirection.getDirection() == null) {
 
             throw new ToyRobotException("Invalid direction");
         }
 
-        if (!tableBoundary.isToyRobotInsideTheTableBoundary(toyRobotPositionAndDiretion)) {
+        if (!tableBoundary.isToyRobotInsideTheTableBoundary(toyRobotPositionAndDirection)) {
 
             return false;
         }
 
-        moveToyRobotForward.isToyRobotSetPosition(toyRobotPositionAndDiretion);
+        moveToyRobotForward.isToyRobotSetPosition(toyRobotPositionAndDirection);
         return true;
     }
 
@@ -74,7 +74,7 @@ public class EvaluateToyPositionService {
         try {
 
             command = Commands.valueOf(args[0]);
-        } catch (IllegalArgumentException e) {
+        } catch (Exception exception) {
 
             throw new ToyRobotException("Unrecognised/Invalid command");
         }
@@ -107,35 +107,39 @@ public class EvaluateToyPositionService {
 
         String resultingPosition;
 
-        switch (command) {
-            case PLACE:
-                resultingPosition = String.valueOf(positionToyRobot(new ToyRobotPositionAndDiretion(x, y, commandDirection)));
-                break;
+        try {
+            switch (command) {
+                case PLACE:
+                    resultingPosition = String.valueOf(positionToyRobot(new ToyRobotPositionAndDirection(x, y, commandDirection)));
+                    break;
 
-            case MOVE:
-                ToyRobotPositionAndDiretion newToyRobotPositionPosition = moveToyRobotForward.getToyRobotPosition().computePosition();
-                if (!tableBoundary.isToyRobotInsideTheTableBoundary(newToyRobotPositionPosition)) {
-                    resultingPosition = String.valueOf(false);
-                }
-                else {
-                    resultingPosition = String.valueOf(moveToyRobotForward.moveToyRobotForward(newToyRobotPositionPosition));
-                }
-                break;
+                case MOVE:
+                    ToyRobotPositionAndDirection newToyRobotPositionPosition = moveToyRobotForward.getToyRobotPosition().computePosition();
+                    if (!tableBoundary.isToyRobotInsideTheTableBoundary(newToyRobotPositionPosition)) {
+                        resultingPosition = String.valueOf(false);
+                    } else {
+                        resultingPosition = String.valueOf(moveToyRobotForward.moveToyRobotForward(newToyRobotPositionPosition));
+                    }
+                    break;
 
-            case LEFT:
-                resultingPosition = String.valueOf(moveToyRobotForward.rotateToyRobotToLeft());
-                break;
+                case LEFT:
+                    resultingPosition = String.valueOf(moveToyRobotForward.rotateToyRobotToLeft());
+                    break;
 
-            case RIGHT:
-                resultingPosition = String.valueOf(moveToyRobotForward.rotateToyRobotToRight());
-                break;
+                case RIGHT:
+                    resultingPosition = String.valueOf(moveToyRobotForward.rotateToyRobotToRight());
+                    break;
 
-            case REPORT:
-                resultingPosition = report();
-                break;
+                case REPORT:
+                    resultingPosition = report();
+                    break;
 
-            default:
-                throw new ToyRobotException("Unrecognised command");
+                default:
+                    throw new ToyRobotException("Unrecognised command");
+            }
+        } catch (Exception exception) {
+
+            throw new ToyRobotException("Please place the toy robot on the table");
         }
         return resultingPosition;
     }
@@ -146,11 +150,11 @@ public class EvaluateToyPositionService {
     public String report() {
         if (moveToyRobotForward.getToyRobotPosition() == null) {
 
-            return null;
+            return "Please place the toy robot on the table";
         }
 
         return "Toy Robot's current position is " + moveToyRobotForward.getToyRobotPosition().getX() + ","
-                                                  + moveToyRobotForward.getToyRobotPosition().getY() + ","
-                                                  + moveToyRobotForward.getToyRobotPosition().getDirection();
+                + moveToyRobotForward.getToyRobotPosition().getY() + ","
+                + moveToyRobotForward.getToyRobotPosition().getDirection();
     }
 }

@@ -1,7 +1,7 @@
 import org.iress.toyrobot.service.EvaluateToyPositionService;
 import org.iress.toyrobot.exception.ToyRobotException;
 import org.iress.toyrobot.constants.Directions;
-import org.iress.toyrobot.impl.ToyRobotPositionAndDiretion;
+import org.iress.toyrobot.impl.ToyRobotPositionAndDirection;
 import org.iress.toyrobot.impl.TableBoundary;
 import org.iress.toyrobot.impl.ToyRobotMovement;
 import org.junit.Assert;
@@ -25,10 +25,10 @@ public class EvaluateToyRobotMovementTest {
         ToyRobotMovement moveToyRobot = new ToyRobotMovement();
         EvaluateToyPositionService evaluateToyPosition = new EvaluateToyPositionService(tableBoundary, moveToyRobot);
 
-        Assert.assertTrue(evaluateToyPosition.positionToyRobot(new ToyRobotPositionAndDiretion(0, 1, Directions.NORTH)));
-        Assert.assertTrue(evaluateToyPosition.positionToyRobot(new ToyRobotPositionAndDiretion(2, 2, Directions.SOUTH)));
-        Assert.assertFalse(evaluateToyPosition.positionToyRobot(new ToyRobotPositionAndDiretion(6, 6, Directions.WEST)));
-        Assert.assertFalse(evaluateToyPosition.positionToyRobot(new ToyRobotPositionAndDiretion(-1, 5, Directions.EAST)));
+        Assert.assertTrue(evaluateToyPosition.positionToyRobot(new ToyRobotPositionAndDirection(0, 1, Directions.NORTH)));
+        Assert.assertTrue(evaluateToyPosition.positionToyRobot(new ToyRobotPositionAndDirection(2, 2, Directions.SOUTH)));
+        Assert.assertFalse(evaluateToyPosition.positionToyRobot(new ToyRobotPositionAndDirection(6, 6, Directions.WEST)));
+        Assert.assertFalse(evaluateToyPosition.positionToyRobot(new ToyRobotPositionAndDirection(-1, 5, Directions.EAST)));
     }
 
     @Test
@@ -41,7 +41,7 @@ public class EvaluateToyRobotMovementTest {
         thrown.expect(ToyRobotException.class);
         evaluateToyPosition.positionToyRobot(null);
         thrown.expect(ToyRobotException.class);
-        evaluateToyPosition.positionToyRobot(new ToyRobotPositionAndDiretion(0, 1, null));
+        evaluateToyPosition.positionToyRobot(new ToyRobotPositionAndDirection(0, 1, null));
     }
 
     @Test

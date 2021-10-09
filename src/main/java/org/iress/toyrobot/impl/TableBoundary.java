@@ -20,7 +20,7 @@ public class TableBoundary implements Boundary {
      * @param position
      * @return
      */
-    public boolean isToyRobotInsideTheTableBoundary(ToyRobotPositionAndDiretion position) {
+    public boolean isToyRobotInsideTheTableBoundary(ToyRobotPositionAndDirection position) {
 
         return !(position.getX() > this.depth ||
                 position.getX() < 0 ||

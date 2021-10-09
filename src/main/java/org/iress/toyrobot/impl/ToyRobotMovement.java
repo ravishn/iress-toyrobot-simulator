@@ -4,7 +4,7 @@ import org.iress.toyrobot.exception.ToyRobotException;
 
 public class ToyRobotMovement {
 
-    private ToyRobotPositionAndDiretion toyRobotPosition;
+    private ToyRobotPositionAndDirection toyRobotPosition;
 
     /**
      * Empty constructor for unit tests
@@ -13,12 +13,12 @@ public class ToyRobotMovement {
 
     }
 
-    public ToyRobotMovement(ToyRobotPositionAndDiretion toyRobotPosition) {
+    public ToyRobotMovement(ToyRobotPositionAndDirection toyRobotPosition) {
 
         this.toyRobotPosition = toyRobotPosition;
     }
 
-    public boolean isToyRobotSetPosition(ToyRobotPositionAndDiretion toyRobotPosition) {
+    public boolean isToyRobotSetPosition(ToyRobotPositionAndDirection toyRobotPosition) {
 
         if (toyRobotPosition == null) {
 
@@ -44,7 +44,7 @@ public class ToyRobotMovement {
      *
      * @return true if moved successfully
      */
-    public boolean moveToyRobotForward(ToyRobotPositionAndDiretion newToyRobotPosition) {
+    public boolean moveToyRobotForward(ToyRobotPositionAndDirection newToyRobotPosition) {
 
         if (newToyRobotPosition == null) {
 
@@ -56,7 +56,7 @@ public class ToyRobotMovement {
         return true;
     }
 
-    public ToyRobotPositionAndDiretion getToyRobotPosition() {
+    public ToyRobotPositionAndDirection getToyRobotPosition() {
 
         return this.toyRobotPosition;
     }
