@@ -1,6 +1,9 @@
 package org.iress.toyrobot.impl;
 
+import org.iress.toyrobot.constants.Directions;
 import org.iress.toyrobot.exception.ToyRobotException;
+
+import java.util.Optional;
 
 public class ToyRobotMovement {
 
@@ -20,7 +23,9 @@ public class ToyRobotMovement {
 
     public boolean isToyRobotSetPosition(ToyRobotPositionAndDirection toyRobotPosition) {
 
-        if (toyRobotPosition == null) {
+        Optional<ToyRobotPositionAndDirection> toyRobotPositionAndDirectionOptional = Optional.ofNullable(toyRobotPosition);
+
+        if (!toyRobotPositionAndDirectionOptional.isPresent()) {
 
             return false;
         }
@@ -46,11 +51,12 @@ public class ToyRobotMovement {
      */
     public boolean moveToyRobotForward(ToyRobotPositionAndDirection newToyRobotPosition) {
 
-        if (newToyRobotPosition == null) {
+        Optional<ToyRobotPositionAndDirection> newToyRobotPositionAndDirectionOptional = Optional.ofNullable(newToyRobotPosition);
+
+        if (!newToyRobotPositionAndDirectionOptional.isPresent()) {
 
             return false;
         }
-
         this.toyRobotPosition = newToyRobotPosition;
 
         return true;
@@ -67,12 +73,13 @@ public class ToyRobotMovement {
      * @return true if rotated successfully
      */
     public boolean rotateToyRobotToLeft() {
-        if (this.toyRobotPosition.direction == null) {
+        Optional<Directions> directionsOptional = Optional.ofNullable(this.toyRobotPosition.direction);
+
+        if (!directionsOptional.isPresent()) {
 
             return false;
         }
-
-        this.toyRobotPosition.direction = this.toyRobotPosition.direction.rotateLeft();
+        this.toyRobotPosition.direction = directionsOptional.get().rotateLeft();
         return true;
     }
 
@@ -83,12 +90,13 @@ public class ToyRobotMovement {
      */
     public boolean rotateToyRobotToRight() {
 
-        if (this.toyRobotPosition.direction == null) {
+        Optional<Directions> directionsOptional = Optional.ofNullable(this.toyRobotPosition.direction);
+
+        if (!directionsOptional.isPresent()) {
 
             return false;
         }
-
-        this.toyRobotPosition.direction = this.toyRobotPosition.direction.rotateRight();
+        this.toyRobotPosition.direction = directionsOptional.get().rotateRight();
 
         return true;
     }

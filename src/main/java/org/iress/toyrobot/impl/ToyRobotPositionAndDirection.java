@@ -3,6 +3,8 @@ package org.iress.toyrobot.impl;
 import org.iress.toyrobot.constants.Directions;
 import org.iress.toyrobot.exception.ToyRobotException;
 
+import java.util.Optional;
+
 /**
  * Class to set the position and direction of the toy robot
  */
@@ -74,11 +76,7 @@ public class ToyRobotPositionAndDirection {
      */
     public ToyRobotPositionAndDirection computePosition() throws ToyRobotException {
 
-        if (this.direction == null) {
-
-            throw new ToyRobotException("Invalid robot direction");
-        }
-
+        this.direction = Optional.ofNullable(this.direction).orElseThrow(() -> new ToyRobotException("Invalid robot direction"));
         ToyRobotPositionAndDirection updatePosition = new ToyRobotPositionAndDirection(this);
 
         switch (this.direction) {
