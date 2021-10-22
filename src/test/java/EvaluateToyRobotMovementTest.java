@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import org.mockito.internal.matchers.Null;
 
 public class EvaluateToyRobotMovementTest {
 
@@ -32,15 +33,15 @@ public class EvaluateToyRobotMovementTest {
     }
 
     @Test
-    public void testToyRobotPositionAndDirectionExceptions() throws ToyRobotException {
+    public void testToyRobotPositionAndDirectionExceptions() throws ToyRobotException, NullPointerException {
 
         TableBoundary board = new TableBoundary(TABLE_DEPTH, TABLE_WIDTH);
         ToyRobotMovement toyRobot = new ToyRobotMovement();
         EvaluateToyPositionService evaluateToyPosition = new EvaluateToyPositionService(board, toyRobot);
 
-        thrown.expect(ToyRobotException.class);
+        thrown.expect(Exception.class);
         evaluateToyPosition.positionToyRobot(null);
-        thrown.expect(ToyRobotException.class);
+        thrown.expect(Exception.class);
         evaluateToyPosition.positionToyRobot(new ToyRobotPositionAndDirection(0, 1, null));
     }
 
