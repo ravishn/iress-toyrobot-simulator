@@ -7,6 +7,8 @@ import org.iress.toyrobot.impl.ToyRobotPositionAndDirection;
 import org.iress.toyrobot.impl.ToyRobotMovement;
 import org.iress.toyrobot.interfaces.Boundary;
 
+import java.util.Optional;
+
 /**
  * Service class to compute the position of the toy robot
  */
@@ -28,22 +30,11 @@ public class EvaluateToyPositionService {
      * @return true if placed successfully
      * @throws ToyRobotException
      */
-    public boolean positionToyRobot(ToyRobotPositionAndDirection toyRobotPositionAndDirection) throws ToyRobotException {
+    public boolean positionToyRobot(ToyRobotPositionAndDirection toyRobotPositionAndDirection) throws ToyRobotException, NullPointerException {
 
-        if (tableBoundary == null) {
-
-            throw new ToyRobotException("Invalid boundary");
-        }
-
-        if (toyRobotPositionAndDirection == null) {
-
-            throw new ToyRobotException("Invalid position");
-        }
-
-        if (toyRobotPositionAndDirection.getDirection() == null) {
-
-            throw new ToyRobotException("Invalid direction");
-        }
+        tableBoundary = Optional.ofNullable(tableBoundary).orElseThrow(() -> new ToyRobotException("Invalid boundary"));
+        toyRobotPositionAndDirection = Optional.of(toyRobotPositionAndDirection).orElseThrow(() -> new ToyRobotException("Invalid position"));
+        toyRobotPositionAndDirection = Optional.of(toyRobotPositionAndDirection).orElseThrow(() -> new ToyRobotException("Invalid direction"));
 
         if (!tableBoundary.isToyRobotInsideTheTableBoundary(toyRobotPositionAndDirection)) {
 
@@ -147,14 +138,14 @@ public class EvaluateToyPositionService {
     /**
      * Method to return the current position of the toy robot in X,Y,DIRECTION format
      */
-    public String report() {
-        if (moveToyRobotForward.getToyRobotPosition() == null) {
+    public String report() throws ToyRobotException {
 
-            return "Please place the toy robot on the table";
-        }
+        ToyRobotPositionAndDirection toyRobotPosition = moveToyRobotForward.getToyRobotPosition();
+        toyRobotPosition = Optional.ofNullable(toyRobotPosition)
+                .orElseThrow(() -> new ToyRobotException("Please place the toy robot on the table"));
 
-        return "Toy Robot's current position is " + moveToyRobotForward.getToyRobotPosition().getX() + ","
-                + moveToyRobotForward.getToyRobotPosition().getY() + ","
-                + moveToyRobotForward.getToyRobotPosition().getDirection();
+        return "Toy Robot's current position is " + toyRobotPosition.getX() + ","
+                + toyRobotPosition.getY() + ","
+                + toyRobotPosition.getDirection();
     }
 }
