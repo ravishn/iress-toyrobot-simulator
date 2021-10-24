@@ -105,11 +105,11 @@ public class EvaluateToyPositionService {
                     break;
 
                 case MOVE:
-                    ToyRobotPositionAndDirection newToyRobotPositionPosition = moveToyRobotForward.getToyRobotPosition().computePosition();
-                    if (!tableBoundary.isToyRobotInsideTheTableBoundary(newToyRobotPositionPosition)) {
+                    ToyRobotPositionAndDirection newToyRobotPosition = moveToyRobotForward.getToyRobotPosition().computePosition();
+                    if (!tableBoundary.isToyRobotInsideTheTableBoundary(newToyRobotPosition)) {
                         resultingPosition = String.valueOf(false);
                     } else {
-                        resultingPosition = String.valueOf(moveToyRobotForward.moveToyRobotForward(newToyRobotPositionPosition));
+                        resultingPosition = String.valueOf(moveToyRobotForward.moveToyRobotForward(newToyRobotPosition));
                     }
                     break;
 
